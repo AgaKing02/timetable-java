@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:id="@+id/week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.002"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/mon"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="MON" />
+
+        <Button
+            android:id="@+id/tue"
+
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="TUE" />
+
+        <Button
+            android:id="@+id/wed"
+
+            android:layout_width="75dp"
+            android:layout_height="56dp"
+            android:layout_margin="4dp"
+            android:text="WED" />
+
+        <Button
+            android:id="@+id/thu"
+
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="THU" />
+
+        <Button
+            android:id="@+id/fri"
+
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="FRI" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/schedule"
+        android:layout_width="416dp"
+        android:layout_height="666dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/week"
+        app:layout_constraintVertical_bias="0.033"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
