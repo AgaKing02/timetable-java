@@ -1,7 +1,6 @@
 package com.example.timetable_java.models;
 
 import java.util.Calendar;
-import java.util.Comparator;
 
 public class Lesson implements Comparable<Lesson> {
     private String name;
@@ -15,6 +14,10 @@ public class Lesson implements Comparable<Lesson> {
         this.teacher = teacher;
         this.description = description;
         this.duration = duration;
+    }
+
+    public Lesson() {
+
     }
 
     public String getName() {
@@ -52,8 +55,10 @@ public class Lesson implements Comparable<Lesson> {
     public boolean isOnGoing() {
 
         Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY)+6;
+        System.out.println(hour);
         int minutes = calendar.get(Calendar.MINUTE);
+        System.out.println(minutes);
 
         int now = hour * 100 + minutes;
         int started = this.getDuration().getStart().getHour() * 100 + this.getDuration().getStart().getMinute();

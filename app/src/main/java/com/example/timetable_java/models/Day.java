@@ -25,6 +25,7 @@ public class Day {
     }
 
     public void addLesson(Lesson lesson) {
+        System.out.println("Added");
         this.lessons.add(lesson);
     }
 

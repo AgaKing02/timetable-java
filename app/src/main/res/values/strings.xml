@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">timetable-java</string>
+
+    <string-array name="days">
+        <item >MONDAY</item>
+        <item >TUESDAY</item>
+        <item >WEDNESDAY</item>
+        <item >THURSDAY</item>
+        <item >FRIDAY</item>
+    </string-array>
 </resources>

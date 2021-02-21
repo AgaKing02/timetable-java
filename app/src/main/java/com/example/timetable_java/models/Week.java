@@ -21,6 +21,7 @@ public class Week {
     public void addLesson(String dayName, Lesson lesson) {
         for (Map.Entry<String, Day> day : schedule.entrySet()) {
             if (day.getKey().equals(dayName)) {
+                System.out.println("Lesson found");
                 day.getValue().addLesson(lesson);
             }
         }

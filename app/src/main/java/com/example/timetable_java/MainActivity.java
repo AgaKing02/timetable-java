@@ -2,10 +2,9 @@ package com.example.timetable_java;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.timetable_java.models.Lesson;
-import com.example.timetable_java.models.Time;
 import com.example.timetable_java.models.TimeDuration;
 import com.example.timetable_java.models.Week;
 import com.google.gson.Gson;
@@ -24,16 +22,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private static Week week;
+    public static Week week;
     private LinearLayout schedule;
     private Button clear;
+    private Button save;
+    private Button add;
     private Calendar calendar;
 
     private Button monday;
@@ -50,8 +48,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         week = loadTheSchedule();
 
-        this.clear = findViewById(R.id.clear);
-        this.calendar=Calendar.getInstance();
+        this.clear = findViewById(R.id.clear_btn);
+        this.save = findViewById(R.id.save_btn);
+        this.add=findViewById(R.id.add_btn);
+        this.calendar = Calendar.getInstance();
 
         this.monday = findViewById(R.id.mon);
         this.tuesday = findViewById(R.id.tue);
@@ -59,8 +59,14 @@ public class MainActivity extends AppCompatActivity {
         this.thursday = findViewById(R.id.thu);
         this.friday = findViewById(R.id.fri);
 
+        add.setOnClickListener(v->{
+            Intent intent = new Intent(this, AddActivity.class);
+            startActivity(intent);
+        });
+
         clear.setOnClickListener(
                 v -> clear());
+        save.setOnClickListener(v -> saveSchedule());
 
         monday.setOnClickListener(v -> init(Week.dayNames[0]));
         tuesday.setOnClickListener(v -> init(Week.dayNames[1]));
@@ -68,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         thursday.setOnClickListener(v -> init(Week.dayNames[3]));
         friday.setOnClickListener(v -> init(Week.dayNames[4]));
 
-        init(Week.dayNames[calendar.get(Calendar.DAY_OF_WEEK)-2]);
 
 
     }
@@ -105,7 +110,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clear() {
+
         this.schedule.removeAllViews();
+        Toast.makeText(getBaseContext(), "Clear", Toast.LENGTH_SHORT).show();
+
     }
 
     public void saveSchedule() {
