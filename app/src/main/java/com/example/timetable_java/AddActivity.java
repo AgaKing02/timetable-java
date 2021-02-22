@@ -45,11 +45,9 @@ public class AddActivity extends AppCompatActivity {
             lesson.setName(lessonName.getText().toString());
             lesson.setDescription(lessonDescription.getText().toString());
             lesson.setTeacher(teacherName.getText().toString());
-            lesson.setDuration(new TimeDuration(new Time(13, 30), new Time(14, 30)));
+            lesson.setDuration(new TimeDuration(new Time(11, 0), new Time(11, 45)));
             Spinner spinner = (Spinner) findViewById(R.id.day_spinner);
             String dayName = spinner.getSelectedItem().toString();
-            System.out.println("Day lesson:"+lesson.toString());
-            System.out.println("Day name:"+dayName);
 
             MainActivity.week.addLesson(dayName, lesson);
             save();
@@ -71,7 +69,7 @@ public class AddActivity extends AppCompatActivity {
         startActivity(intent);
     }
     protected void save(){
-        System.out.println("Aga in");
+
         Gson gson = new Gson();
         String json = gson.toJson(MainActivity.week);
         String FILENAME = "schedule.json";

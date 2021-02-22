@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.clear = findViewById(R.id.clear_btn);
         this.save = findViewById(R.id.save_btn);
-        this.add=findViewById(R.id.add_btn);
+        this.add = findViewById(R.id.add_btn);
         this.calendar = Calendar.getInstance();
 
         this.monday = findViewById(R.id.mon);
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         this.thursday = findViewById(R.id.thu);
         this.friday = findViewById(R.id.fri);
 
-        add.setOnClickListener(v->{
+        add.setOnClickListener(v -> {
             Intent intent = new Intent(this, AddActivity.class);
             startActivity(intent);
         });
@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
         friday.setOnClickListener(v -> init(Week.dayNames[4]));
 
 
-
     }
 
+    @SuppressLint("ResourceType")
     protected void init(String dayName) {
 
         this.schedule = findViewById(R.id.schedule);
@@ -98,9 +98,9 @@ public class MainActivity extends AppCompatActivity {
                     + " - " + timeDuration.getEnd().getHour() + ":" + timeDuration.getEnd().getMinute()
             );
 
-            GradientDrawable border = new GradientDrawable();
-            border.setColor(0xFFFFFFFF); //white background
-            border.setStroke(1, 0xFF000000); //black border with full opacity
+
+            if (lesson.isOnGoing())
+                textView.setBackgroundResource(R.layout.textview_border);
             this.schedule.addView(textView);
         }
     }
@@ -117,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void saveSchedule() {
-        System.out.println("Aga in");
         Gson gson = new Gson();
         String json = gson.toJson(week);
         String FILENAME = "schedule.json";
@@ -165,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
         Week week = null;
         week = gson.fromJson(temp.toString(), Week.class);
-        System.out.println("Loaded");
         return week;
     }
 
